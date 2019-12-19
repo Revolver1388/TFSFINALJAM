@@ -28,7 +28,7 @@ public class groundPoundPuzzle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftAlt)) InteractWithMe();
+     //   if (Input.GetKeyDown(KeyCode.LeftAlt)) InteractWithMe();
     }
     public void DontInteractWithMe()
     {
