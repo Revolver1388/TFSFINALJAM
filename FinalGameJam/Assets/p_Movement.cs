@@ -20,7 +20,7 @@ public class p_Movement : MonoBehaviour
         cammy = FindObjectOfType<PlayerCamera>();
         player = FindObjectOfType<p_Movement>();
         rb = GetComponent<Rigidbody>();
-        cammy.wallCamChoice = PlayerCamera.WallCamChoice.Right;
+        cammy.wallCamChoice = PlayerCamera.WallCamChoice.Back;
     }
 
     // Update is called once per frame
