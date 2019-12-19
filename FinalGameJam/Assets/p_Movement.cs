@@ -13,7 +13,7 @@ public class p_Movement : MonoBehaviour
     float vertical;
     float rotateSpeed = 3;
     float walkAccel = 14;
-    float maxWalkSpeed = 4;
+    public float maxWalkSpeed = 4;
 
     // Start is called before the first frame update
     void Start()
