@@ -63,6 +63,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\groundPoundPuzzle.cs" />
+    <Compile Include="Assets\m_Particles.cs" />
     <Compile Include="Assets\p_Movement.cs" />
     <Compile Include="Assets\Scripts\Camera\PlayerCamera.cs" />
     <None Include="Assets\Enemy\Prefab\Enemy_Gerald\RockThrowingGolem_Package_Sebastian\ToonV3.2.shader" />
