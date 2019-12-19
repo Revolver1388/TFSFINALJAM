@@ -13,7 +13,7 @@ public class PlayerCamera : MonoBehaviour
 {
 
     #region Player
-    GameObject Player;
+    public GameObject Player;
     //PlayerClass pl;
     GameObject shadow;
     Rigidbody p_RB;
@@ -37,7 +37,7 @@ public class PlayerCamera : MonoBehaviour
     #region Camera Distance and Orbit Management
     [Header("Distance from Player, Suggested Distance 2-3")]
     [Range(1, 10)]
-    float distFromPlayer = 3;
+    float distFromPlayer = 8;
     float YAxis;
     float YDistSpeed = 1;
     float camDistMax = 5;
@@ -53,7 +53,7 @@ public class PlayerCamera : MonoBehaviour
     #region CameraRayCasts
     [Header("CameraRayCast")]
     Camera main;
-    GameObject aimer;
+    public GameObject aimer;
     // int p_LayerMask = 1 << 9;
     public LayerMask IgnoreMask;
     RaycastHit hit;
@@ -108,7 +108,7 @@ public class PlayerCamera : MonoBehaviour
     [Header("CameraType")]
     [SerializeField]
     [Tooltip("Choose what type of camera the game is currently using.")]
-    CameraType CamType;
+    public CameraType CamType;
 
     #region 2D sideScroll
     [Header("2D Platforming")]
@@ -165,9 +165,9 @@ public class PlayerCamera : MonoBehaviour
     void Start()
     {
         pitchMinMax = new Vector2(-20, 75);
-        CamType = CameraType.Orbit;
+       // CamType = CameraType.Orbit;
         sr_Sensitivity = r_Sensitivity;
-        wallCamChoice = WallCamChoice.Front;
+        //wallCamChoice = WallCamChoice.Front;
         currentRotation = Vector3.SmoothDamp(currentRotation, Player.transform.eulerAngles, ref smoothingVelocity, rotationsmoothTime);
         if (lockCursor)
             Cursor.lockState = CursorLockMode.Locked;
@@ -198,13 +198,13 @@ public class PlayerCamera : MonoBehaviour
         //if (ShadowManager(Player))
         //    shadow.transform.position = new Vector3(s_Ground.point.x, s_Ground.point.y + 0.02f, s_Ground.point.z);
 
-        if (CamType == CameraType.Orbit)
-        {
-            if (Input.GetButtonDown("LeftBumper"))
-            {
-                resetCamera(0.0f);
-            }
-        }
+        //if (CamType == CameraType.Orbit)
+        //{
+        //    if (Input.GetButtonDown("LeftBumper"))
+        //    {
+        //        resetCamera(0.0f);
+        //    }
+        //}
         //if (dragon != null)//most of this will be moved to another script, (Player functionality to the grapple trigger)
         //{
         //    SteeringTheDragon();
@@ -256,7 +256,7 @@ public class PlayerCamera : MonoBehaviour
     //Basic Camera Movements, Orbit around player and joystick control, as well as player offset
     void CamMovement3D()
     {
-        YAxis = Input.GetAxis("CamY") * sensitivity + Input.GetAxis("MouseY") * sensitivity;
+        YAxis = /*Input.GetAxis("CamY") * sensitivity + */Input.GetAxis("MouseY") * sensitivity;
         pitch = (invY) ? pitch += YAxis : pitch -= YAxis;
         pitch = Mathf.Clamp(pitch, pitchMinMax.x, pitchMinMax.y);
 
@@ -268,7 +268,7 @@ public class PlayerCamera : MonoBehaviour
         //else
         //{
         currentRotation = Vector3.SmoothDamp(currentRotation, new Vector3(pitch, yaw), ref smoothingVelocity, rotationsmoothTime);
-        yaw += Input.GetAxis("CamX") * sensitivity + Input.GetAxis("MouseX") * sensitivity;
+        yaw += /*Input.GetAxis("CamX") * sensitivity +*/ Input.GetAxis("MouseX") * sensitivity;
         //}
 
         transform.eulerAngles = currentRotation;
